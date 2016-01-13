@@ -72,7 +72,7 @@
 		625EE0AE1C41CF9C00A98CC3 /* ship3.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 625EE0AA1C41CF9C00A98CC3 /* ship3.atlas */; };
 		625EE0AF1C41CF9C00A98CC3 /* ship2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 625EE0AB1C41CF9C00A98CC3 /* ship2.atlas */; };
 		625EE0B01C41CF9C00A98CC3 /* ship1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 625EE0AC1C41CF9C00A98CC3 /* ship1.atlas */; };
-		628012C21C33287300930C42 /* pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 628012C11C33287300930C42 /* pause@2x.png */; };
+		625EE0B21C45EA0C00A98CC3 /* pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 625EE0B11C45EA0C00A98CC3 /* pause@2x.png */; };
 		628012C41C33387C00930C42 /* aimNub.png in Resources */ = {isa = PBXBuildFile; fileRef = 628012C31C33387C00930C42 /* aimNub.png */; };
 		628012C81C33411500930C42 /* BlankThumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 628012C71C33411500930C42 /* BlankThumb.png */; };
 		628012CC1C35534300930C42 /* manDie.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 628012CB1C35534300930C42 /* manDie.atlas */; };
@@ -156,7 +156,7 @@
 		625EE0AA1C41CF9C00A98CC3 /* ship3.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ship3.atlas; sourceTree = "<group>"; };
 		625EE0AB1C41CF9C00A98CC3 /* ship2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ship2.atlas; sourceTree = "<group>"; };
 		625EE0AC1C41CF9C00A98CC3 /* ship1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ship1.atlas; sourceTree = "<group>"; };
-		628012C11C33287300930C42 /* pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pause@2x.png"; path = "../pause@2x.png"; sourceTree = "<group>"; };
+		625EE0B11C45EA0C00A98CC3 /* pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause@2x.png"; sourceTree = "<group>"; };
 		628012C31C33387C00930C42 /* aimNub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aimNub.png; sourceTree = "<group>"; };
 		628012C71C33411500930C42 /* BlankThumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlankThumb.png; sourceTree = "<group>"; };
 		628012CB1C35534300930C42 /* manDie.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = manDie.atlas; sourceTree = "<group>"; };
@@ -230,13 +230,13 @@
 		621A9A001C2F1EA700C2CC32 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				625EE0B11C45EA0C00A98CC3 /* pause@2x.png */,
 				625EE0A01C3ADCC000A98CC3 /* Ships */,
 				625EE07F1C3AD84B00A98CC3 /* enemyBullets */,
 				625EE0661C3AD5BB00A98CC3 /* manBarrels */,
 				625EE04D1C3AD4E900A98CC3 /* manBullets */,
 				628012C31C33387C00930C42 /* aimNub.png */,
 				628012C71C33411500930C42 /* BlankThumb.png */,
-				628012C11C33287300930C42 /* pause@2x.png */,
 				628012CB1C35534300930C42 /* manDie.atlas */,
 				62EB28161C31A0A400A7FBD2 /* manBullet.atlas */,
 				621A9A1C1C3011C800C2CC32 /* manFrames.atlas */,
@@ -458,6 +458,7 @@
 				621A99F61C2F1B0F00C2CC32 /* Assets.xcassets in Resources */,
 				621A9A0D1C2F319A00C2CC32 /* 1Background.png in Resources */,
 				625EE0791C3AD5BB00A98CC3 /* Barrel4.png in Resources */,
+				625EE0B21C45EA0C00A98CC3 /* pause@2x.png in Resources */,
 				625EE09F1C3AD84B00A98CC3 /* EnemyBullet4Explosion3.png in Resources */,
 				625EE09B1C3AD84B00A98CC3 /* EnemyBullet3Explosion3.png in Resources */,
 				625EE05D1C3AD4E900A98CC3 /* Bullet12.png in Resources */,
@@ -480,7 +481,6 @@
 				625EE05C1C3AD4E900A98CC3 /* Bullet11.png in Resources */,
 				625EE0731C3AD5BB00A98CC3 /* Barrel1.png in Resources */,
 				625EE0741C3AD5BB00A98CC3 /* Barrel10.png in Resources */,
-				628012C21C33287300930C42 /* pause@2x.png in Resources */,
 				625EE07B1C3AD5BB00A98CC3 /* Barrel6.png in Resources */,
 				625EE09E1C3AD84B00A98CC3 /* EnemyBullet4Explosion2.png in Resources */,
 				625EE0611C3AD4E900A98CC3 /* Bullet5.png in Resources */,

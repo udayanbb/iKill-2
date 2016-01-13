@@ -24,6 +24,7 @@
     
     //self.xScale = 2;
     //self.yScale = 2;
+    //commit test
     
     //Load man textures
     SKTextureAtlas *walkAtlas =[SKTextureAtlas atlasNamed:@"manFrames"];

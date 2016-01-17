@@ -5,4 +5,6 @@ I wrote the first version of iKill about five years ago, building my own game en
 I am now in the process of rewriting the game code using SpriteKit.
 Screenshots of the original game are in the "Screenshots" folder.
 
+Most of the new code is in the file GameScene.m, with further code in Player.m, Ship.m, Weapon.m and Bullet.m
+
 

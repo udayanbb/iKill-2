@@ -113,9 +113,9 @@
     
 }
 
-//Trigger stop texture
+
+//Trigger stationary texture
 -(void) stop {
-    
     if(!self.isDead && self.isWalking) {
         [self removeActionForKey:@"walkAction"];
         self.texture = self.standTexture;
@@ -123,14 +123,12 @@
     }
 }
 
+
 -(void) takeDamage: (float) damage {
-    
     self.health -= damage;
-    
     if (self.health <= 0) {
         self.health = 0;
         [self die];
-
     }
 }
 

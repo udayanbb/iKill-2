@@ -310,22 +310,25 @@
 
 -(void)update:(NSTimeInterval)currentTime {
     
+    //Called with every frame
+    
+    //Update debug label
     CGPoint positionInScreen = [self convertPoint:self.player.position fromNode:self.worldNode];
     //self.debugLabel.text = [NSString stringWithFormat: @"x:%f and y:%f", self.worldNode.position.x, self.worldNode.position.y];
     self.debugLabel.text = [NSString stringWithFormat: @"Health: %f", self.player.health];
 
     
+    
+    //update worldNode position so view is centered on player
     if (positionInScreen.x > 600) {
         self.worldNode.position = CGPointMake( self.worldNode.position.x - (positionInScreen.x - 600) - 1, self.worldNode.position.y);
         if (self.worldNode.position.x < -1440 + self.frame.size.width) self.worldNode.position =CGPointMake(-1440 + self.frame.size.width, self.worldNode.position.y);
     }
-    
     else if (positionInScreen.x < 100) {
         self.worldNode.position = CGPointMake( self.worldNode.position.x + (100-positionInScreen.x) + 1, self.worldNode.position.y);
         if(self.worldNode.position.x > 0) self.worldNode.position =CGPointMake(0, self.worldNode.position.y);
 
     }
-        
     if (positionInScreen.y > 250) {
         self.worldNode.position = CGPointMake(self.worldNode.position.x, self.worldNode.position.y  -(positionInScreen.y -250) - 1);
         //if(self.worldNode.position.x > 0) self.worldNode.position =CGPointMake(0, self.worldNode.position.y);
@@ -334,6 +337,8 @@
         if(self.worldNode.position.y != 0) self.worldNode.position = CGPointMake(self.worldNode.position.x, self.worldNode.position.y +  (200 - positionInScreen.y) + 1);
         if(self.worldNode.position.y > 0) self.worldNode.position =CGPointMake(self.worldNode.position.x, 0);
     }
+    
+    
     
     [self.ship updateAIWithTime:currentTime WorldPosition:self.worldNode.position PlayerPosition:self.player.position];
     
@@ -421,7 +426,7 @@
     self.ship.noTarget = YES;
     self.debugLabel.fontColor = [SKColor redColor];
     //[self pause];
-    //self.debugLabel.text = [NSString stringWithFormat: @"bitch you dead"];
+    //self.debugLabel.text = [NSString stringWithFormat: @"you appear to be dead"];
 
 }
 

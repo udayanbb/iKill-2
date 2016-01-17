@@ -14,15 +14,15 @@
 
 @implementation Bullet
 
+
+//init for enemy bullets
 -(id) initWithEnemyType: (int) type {
-    
 
+    
+    //Load bullet texture
     NSString *bulletImageString = [NSString stringWithFormat:@"EnemyBullet%d.png", type];
-    
     self = [super initWithTexture:[SKTexture textureWithImageNamed:bulletImageString]];
-
     self.blowFrames = [NSMutableArray arrayWithCapacity:3];
-    
     
     bulletImageString = [NSString stringWithFormat:@"EnemyBullet%dExplosion%d.png", type, 1];
     [self.blowFrames addObject:[SKTexture textureWithImageNamed:bulletImageString]];
@@ -30,9 +30,9 @@
     [self.blowFrames addObject:[SKTexture textureWithImageNamed:bulletImageString]];
     bulletImageString = [NSString stringWithFormat:@"EnemyBullet%dExplosion%d.png", type, 3];
     [self.blowFrames addObject:[SKTexture textureWithImageNamed:bulletImageString]];
-
     
     self.zPosition = kPlayerWeaponZ;
+    
     
     //Configure bullet physics
     self.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:self.frame.size.width/2];
@@ -41,7 +41,6 @@
     self.physicsBody.collisionBitMask = groundCategory;
     self.physicsBody.contactTestBitMask = playerCategory | groundCategory;
     
-
     self.physicsBody.linearDamping = 0.0;
     self.physicsBody.friction = 0.0;
     self.physicsBody.allowsRotation = NO;
@@ -60,6 +59,8 @@
 }
 
 
+
+//init for player bullets
 -(id) initWithType: (int) type {
     
     
@@ -102,7 +103,6 @@
     self.damage = 20;
     
     return self;
-    
 }
 
 

@@ -16,20 +16,16 @@
 -(id) initWithScene: (GameScene*) scene type: (int) typeCode {
     
     typeCode = (arc4random() % 4) + 1;
+    self.code = 1;
     
-    self.code = typeCode;
+    self = [super initWithTexture:[SKTexture textureWithImageNamed:@"Ship2Glow1.png"]];
     
-    self = [super initWithTexture:[SKTexture textureWithImageNamed:@"Ship1Glow1"]];
     
     self.timeOfLastTrigger = 0;
-    
     self.shouldDelete = NO;
-    
     self.parentScene = scene;
-    
     self.health = 100;
     self.maxHealth = 100;
-    
     self.noTarget = NO;
     self.timeOfLastShot = 0;
     self.timeUntilNextShot = 0;
@@ -39,9 +35,6 @@
     
     //Load textures
     self.glowFrames = [NSMutableArray arrayWithCapacity:3];
-    
-    
-    
     
     NSString *atlasString = [NSString stringWithFormat:@"ship%d", self.code];
     NSLog(atlasString);
@@ -57,7 +50,6 @@
     
     textureName = [NSString stringWithFormat:@"Ship%dGlow%d.png", self.code, 2];
     [self.glowFrames addObject:[shipAtlas textureNamed:textureName]];
-    
 
     self.blowFrames = [NSMutableArray arrayWithCapacity:4];
     textureName = [NSString stringWithFormat:@"Ship%dBlow%d.png", self.code, 1];
@@ -72,6 +64,9 @@
     [self glow];
     
     self.zPosition = kShipZ;
+    
+    
+    
     
     //Configure man physics
     self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(self.frame.size.width-85, self.frame.size.height - 60)];
@@ -89,19 +84,22 @@
     self.physicsBody.dynamic = YES;
     self.physicsBody.affectedByGravity = NO;
     
-    self.healthSliderMaxWidth = self.frame.size.width - 50;
     
+    //Construct and add health slider
+    self.healthSliderMaxWidth = self.frame.size.width - 50;
     self.healthSlider = [SKShapeNode shapeNodeWithRect:CGRectMake(-self.healthSliderMaxWidth/2, -self.frame.size.height/2 + 15, self.healthSliderMaxWidth, 3) cornerRadius:1];
     self.healthSlider.alpha = 0;
     self.healthSlider.fillColor = [SKColor redColor];
     self.healthSlider.zPosition = 1;
-    
     [self addChild: self.healthSlider];
+    
     
     return self;
     
 }
 
+
+//Initiate glow animation
 -(void) glow {
     SKAction *animation = [SKAction animateWithTextures:self.glowFrames timePerFrame:0.1f resize:YES restore:NO];
     SKAction *infinteLoop = [SKAction repeatActionForever:animation];
@@ -194,6 +192,8 @@
 }
 
 
+
+//Ship is dead - queue explosion animations and deletion from parent
 -(void)shipBlow {
     self.alpha = 0.8;
     [self removeAllActions];

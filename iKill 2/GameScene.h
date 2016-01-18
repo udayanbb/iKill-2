@@ -14,6 +14,7 @@
 @class Ship;
 @class Bullet;
 @class Weapon;
+@class SKButton;
 
 @interface GameScene : SKScene <SKPhysicsContactDelegate>
 
@@ -31,11 +32,14 @@
 @property (nonatomic) Weapon *weapon;
 
 @property (nonatomic) SKLabelNode *debugLabel;
+@property (nonatomic) SKLabelNode *ammoLabel;
 
 @property (nonatomic) float defaultNubX;
 
 @property  NSMutableArray *controlSurfaces;
+@property  NSMutableArray *weapons;
 
+@property (nonatomic) SKButton *changeWeaponButton;
 
 -(void) playerDead;
 

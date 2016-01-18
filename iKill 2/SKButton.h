@@ -8,7 +8,7 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-typedef enum {kLeftButton, kRightButton, kUpButton, kPauseButton, kAimSlider} ButtonType;
+typedef enum {kLeftButton, kRightButton, kUpButton, kPauseButton, kAimSlider, kChangeWeaponButton} ButtonType;
 
 @interface SKButton : SKSpriteNode
 

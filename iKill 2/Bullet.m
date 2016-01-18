@@ -64,9 +64,9 @@
 -(id) initWithType: (int) type {
     
     
-    int rand = (arc4random() % 12) + 1;
+    //int rand = (arc4random() % 12) + 1;
     
-    NSString *bulletImageString = [NSString stringWithFormat:@"Bullet%d.png", rand];
+    NSString *bulletImageString = [NSString stringWithFormat:@"Bullet%d.png", type];
     
     self = [super initWithTexture:[SKTexture textureWithImageNamed:bulletImageString]];
     

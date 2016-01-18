@@ -36,6 +36,7 @@
 
     
     //Add background node with appropriate image
+    
     SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"1Background"];
     float scale = view.frame.size.width/background.frame.size.width;
     background.anchorPoint = CGPointZero;
@@ -72,6 +73,12 @@
     self.debugLabel.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) + 150);
     [self addChild:self.debugLabel];
     
+    self.ammoLabel = [SKLabelNode labelNodeWithText:@"100"];
+    self.ammoLabel.fontColor = [SKColor darkGrayColor];
+    self.ammoLabel.zPosition = kUIElementsZ;
+    self.ammoLabel.position = CGPointMake(CGRectGetMidX(self.frame)+180, CGRectGetMidY(self.frame) + 150);
+    [self addChild:self.ammoLabel];
+    
     
     //Ground collision masks
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"1Rectangles1" ofType:@"plist"];
@@ -107,7 +114,13 @@
     
     
     //Weapon Tests
-    self.weapon = [[Weapon alloc]initWithScene:self wCode:0];
+    
+    self.weapons = [NSMutableArray arrayWithCapacity:12];
+    for (int i = 1; i <= 12; i++) {
+        [self.weapons addObject:[[Weapon alloc]initWithScene:self wCode:i]];
+    }
+    
+    self.weapon = [self.weapons objectAtIndex:0];
     [self.player addChild:self.weapon];
     self.player.weapon = self.weapon;
 
@@ -160,6 +173,17 @@
     [self.controlSurfaces addObject:pauseButton];
     
     
+    //Change weapon button
+    self.changeWeaponButton = [SKButton spriteNodeWithImageNamed:@"Drop1.png"];
+    self.changeWeaponButton.zPosition = kUIElementsZ;
+    self.changeWeaponButton.anchorPoint = CGPointZero;
+    self.changeWeaponButton.position = CGPointMake(self.frame.size.width - self.changeWeaponButton.frame.size.width, self.frame.size.height - self.changeWeaponButton.frame.size.height);
+    
+    self.changeWeaponButton.pressed = FALSE;
+    self.changeWeaponButton.buttonType = kChangeWeaponButton;
+    self.changeWeaponButton.isActive = NO;
+    [self addChild:self.changeWeaponButton];
+    [self.controlSurfaces addObject:self.changeWeaponButton];
     
     //Shoot control prototype
 
@@ -183,7 +207,6 @@
     
     
 }
-
 
 
 
@@ -216,16 +239,18 @@
                                     
                     self.aimNub.position = CGPointMake(location.x, self.aimNub.position.y);
                     if (location.x - self.defaultNubX > 0) {
-                        self.weapon.zRotation = (location.x - self.defaultNubX) / 45;
+                        self.weapon.barrel.zRotation = (location.x - self.defaultNubX) / 60;
                         [self.player setLeft:NO];
                     }
                     else {
-                        self.weapon.zRotation = (-location.x + self.defaultNubX) / 45;
+                        self.weapon.barrel.zRotation = (-location.x + self.defaultNubX) / 60;
                         [self.player setLeft:YES];
                     }
                     
                     break;
-                    
+                case kChangeWeaponButton:
+                    [self changeWeapon];
+                    break;
                 default:
                     [NSException raise:@"Whuut" format:@"%d", surface.buttonType];
             }
@@ -252,13 +277,15 @@
                 case kAimSlider:
                     self.aimNub.position = CGPointMake(location.x, self.aimNub.position.y);
                     if (location.x - self.defaultNubX > 0) {
-                        self.weapon.zRotation = (location.x - self.defaultNubX) / 45;
+                        self.weapon.barrel.zRotation = (location.x - self.defaultNubX) / 60;
                         [self.player setLeft:NO];
                     }
                     else {
-                        self.weapon.zRotation = (-location.x + self.defaultNubX) / 45;
+                        self.weapon.barrel.zRotation = (-location.x + self.defaultNubX) / 60;
                         [self.player setLeft:YES];
                     }
+                    break;
+                case kChangeWeaponButton:
                     break;
                 default:
                     [NSException raise:@"Whuut" format:@"%d", surface.buttonType];
@@ -294,7 +321,8 @@
                     //self.aimNub.position = CGPointMake(self.defaultNubX, self.aimNub.position.y);
                     elapsed = [currentTime timeIntervalSinceDate:self.timeAimNubTouchBegan];
                     if (elapsed < 0.3) [self.weapon fire];
-                    
+                    break;
+                case kChangeWeaponButton:
                     break;
                 default:
                     [NSException raise:@"Whuut" format:@"%d", surface.buttonType];
@@ -317,7 +345,7 @@
     //self.debugLabel.text = [NSString stringWithFormat: @"x:%f and y:%f", self.worldNode.position.x, self.worldNode.position.y];
     self.debugLabel.text = [NSString stringWithFormat: @"Health: %f", self.player.health];
 
-    
+    self.ammoLabel.text = [NSString stringWithFormat: @"%d", self.weapon.ammo];
     
     //update worldNode position so view is centered on player
     if (positionInScreen.x > 600) {
@@ -366,6 +394,8 @@
                 case kPauseButton:
                     break;
                 case kAimSlider:
+                    break;
+                case kChangeWeaponButton:
                     break;
                 default:
                     [NSException raise:@"Unrecog button in update()" format:@"%d", surface.buttonType];
@@ -437,7 +467,7 @@
         self.physicsWorld.speed = 1;
     }
     else {
-        fade = [SKAction fadeAlphaTo:0.5 duration:0.1];
+        fade = [SKAction fadeAlphaTo:0.3 duration:0.1];
         self.physicsWorld.speed = 0;
     }
     self.worldNode.paused = !self.worldNode.paused;
@@ -450,5 +480,21 @@
     [self.worldNode addChild:self.ship];
 }
 
+-(void) changeWeapon {
+    int index = self.weapon.code % 12;
+    Weapon *temp = [self.weapons objectAtIndex:index];
+    int ammo = temp.ammo;
+    while(ammo == 0) {
+        index = (index + 1) %12;
+        temp = [self.weapons objectAtIndex:index];
+        ammo = temp.ammo;
+    }
+    temp.barrel.zRotation = self.weapon.barrel.zRotation;
+    
+    [self.weapon removeFromParent];
+    [self.player addChild:temp];
+    self.weapon = temp;
+    self.changeWeaponButton.texture = self.weapon.buttonTexture;
+}
 
 @end

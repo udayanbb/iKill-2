@@ -11,6 +11,8 @@
 #import "GameScene.h"
 #import "Weapon.h"
 
+#define kxScale 1
+
 @implementation Player
 
 -(id) initWithScene: (GameScene*) scene {
@@ -66,6 +68,10 @@
     
     self.health = 100;
     
+    
+    //self.xScale = 2.5;
+    //self.yScale = 2.5;
+    
     return self;
 
 }
@@ -74,11 +80,11 @@
 -(void) setLeft: (BOOL) left {
     if(left == NO) {
         self.isLeft = NO;
-        self.xScale = -1;
+        self.xScale = -kxScale;
     }
     else {
         self.isLeft = YES;
-        self.xScale = 1;
+        self.xScale = kxScale;
     }
 }
 

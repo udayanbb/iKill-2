@@ -16,23 +16,43 @@
 
 - (id) initWithScene: (GameScene*) scene wCode: (int) weaponCode {
     
+    //int rand = (arc4random() % 12) + 1;
     
-    int rand = (arc4random() % 12) + 1;
+    NSString *barrelImageString = [NSString stringWithFormat:@"Barrel%d.png", weaponCode];
     
-    NSString *barrelImageString = [NSString stringWithFormat:@"Barrel%d.png", rand];
+    self = [super init];
+    self.barrel = [SKSpriteNode spriteNodeWithTexture:[SKTexture textureWithImageNamed:barrelImageString]];
+    self.barrel.position = CGPointMake(-8.8, 7);
+    [self addChild:self.barrel];
     
-    self = [super initWithTexture:[SKTexture textureWithImageNamed:barrelImageString]];
+    NSString *handleImageString = [NSString stringWithFormat:@"Back%d.png", weaponCode];
+    SKSpriteNode *handle = [SKSpriteNode spriteNodeWithImageNamed:handleImageString];
+    handle.position = CGPointMake(-6, 4);
+    handle.xScale = -1;
+    [self addChild:handle];
+    
+    NSString *pivotImageString = [NSString stringWithFormat:@"Pivot%d.png", weaponCode];
+    SKSpriteNode *pivot = [SKSpriteNode spriteNodeWithImageNamed:pivotImageString];
+    pivot.position = CGPointMake(-10, 9);
+    pivot.zPosition = 1;
+    [self addChild:pivot];
+    
+    self.ammo = 100;
     
     self.code = weaponCode;
     
     self.referencePoint = [[SKNode alloc]init];
-    self.referencePoint.position = CGPointMake(0, self.frame.size.height/2);
-    [self addChild: self.referencePoint];
+    self.referencePoint.position = CGPointMake(0, self.barrel.frame.size.height/2);
+    
+    
+    NSString *dropImageString = [NSString stringWithFormat:@"Drop%d.png", weaponCode];
+    self.buttonTexture = [SKTexture textureWithImageNamed:dropImageString];
+    
+    [self.barrel addChild: self.referencePoint];
     
     self.parentScene = scene;
-    self.zPosition = 1;
-    self.position = CGPointMake(0, 25);
-    self.xScale = -1;
+    self.zPosition = kPlayerWeaponZ;
+    self.position = CGPointMake(0, 23);
     return self;
 }
 
@@ -62,13 +82,20 @@ pivot = [[UIImage imageNamed:[NSString stringWithFormat:@"Pivot%d.png", code]] r
 
 -(void) fire {
     Bullet *bullet =[[Bullet alloc]initWithType: self.code];
-    bullet.position = [self convertPoint:self.referencePoint.position toNode:self.parentScene.worldNode];
+    bullet.position = [self.barrel convertPoint:self.referencePoint.position toNode:self.parentScene.worldNode];
     
-    CGPoint psuedoRelative = pointSub([self convertPoint:self.position toNode:self.parentScene.worldNode], [self convertPoint:self.referencePoint.position toNode:self.parentScene.worldNode]);
+    self.ammo--;
+    
+    //CGPoint relativeBarrel  = [self convertPoint:self.barrel.position toNode:self.parentScene.worldNode];
+    //CGPoint relativeReference = [self convertPoint:self.referencePoint.position toNode:self.parentScene.worldNode];
+    
+    CGPoint psuedoRelative = pointSub([self convertPoint:self.barrel.position toNode:self.parentScene.worldNode], [self.barrel convertPoint:self.referencePoint.position toNode:self.parentScene.worldNode]);
     psuedoRelative =  pointMult(psuedoRelative, 1/pointLength(psuedoRelative));
     CGVector vel = CGVectorMake(-psuedoRelative.x * 500, -psuedoRelative.y*500);
     bullet.physicsBody.velocity = vel;
     [self.parentScene.worldNode addChild:bullet];
+    
+    //NSLog(@"x: %f, y: %f", psuedoRelative.x, psuedoRelative.y);
 }
 
 

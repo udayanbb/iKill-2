@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<integer>180</integer>
+	<integer>120</integer>
+	<integer>59</integer>
+	<integer>19</integer>
+	<integer>540</integer>
+	<integer>120</integer>
+	<integer>59</integer>
+	<integer>19</integer>
+	<integer>900</integer>
+	<integer>120</integer>
+	<integer>59</integer>
+	<integer>19</integer>
+	<integer>1260</integer>
+	<integer>120</integer>
+	<integer>59</integer>
+	<integer>19</integer>
+	<integer>0</integer>
+	<integer>160</integer>
+	<integer>59</integer>
+	<integer>19</integer>
+	<integer>360</integer>
+	<integer>160</integer>
+	<integer>59</integer>
+	<integer>19</integer>
+	<integer>720</integer>
+	<integer>160</integer>
+	<integer>59</integer>
+	<integer>19</integer>
+	<integer>1080</integer>
+	<integer>160</integer>
+	<integer>59</integer>
+	<integer>19</integer>
+	<integer>1420</integer>
+	<integer>160</integer>
+	<integer>19</integer>
+	<integer>19</integer>
+</array>
+</plist>

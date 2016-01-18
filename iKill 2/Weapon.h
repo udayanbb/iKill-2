@@ -12,7 +12,7 @@
 
 @class Bullet;
 
-@interface Weapon : SKSpriteNode
+@interface Weapon : SKNode
 
 -(id) initWithScene: (GameScene*) scene wCode: (int) weaponCode;
 
@@ -20,8 +20,11 @@
 @property (weak, nonatomic) GameScene *parentScene;
 
 @property SKNode *referencePoint;
+@property SKSpriteNode *barrel;
+@property SKTexture *buttonTexture;
 
 @property int code;
+@property int ammo;
 
 -(Bullet*) createBulletWithPosition: (CGPoint) position withVelocity: (CGVector) velocity;
 

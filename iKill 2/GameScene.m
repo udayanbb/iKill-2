@@ -37,7 +37,11 @@
     
     //Add background node with appropriate image
     
-    SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:@"1Background"];
+    int worldCode = (arc4random() % 4) + 1;
+    int levelCode = (arc4random() % 4) + 1;
+    
+    NSString *backgroundImageString = [NSString stringWithFormat:@"%dBackground.png", worldCode];
+    SKSpriteNode *background = [SKSpriteNode spriteNodeWithImageNamed:backgroundImageString];
     float scale = view.frame.size.width/background.frame.size.width;
     background.anchorPoint = CGPointZero;
     background.xScale = scale;
@@ -48,7 +52,9 @@
     
     
     //Add test foreground: world node
-    self.worldNode = [SKSpriteNode spriteNodeWithImageNamed:@"1Foreground1"];
+    
+    NSString *foregroundImageString = [NSString stringWithFormat:@"%dForeground%d.png", worldCode, levelCode];
+    self.worldNode = [SKSpriteNode spriteNodeWithImageNamed:foregroundImageString];
     //NSLog(@"Foreground dimensions: x %f, y %f", self.worldNode.size.width, self.worldNode.size.height);
     self.worldNode.anchorPoint = CGPointZero;
     self.worldNode.position = CGPointZero;
@@ -81,7 +87,8 @@
     
     
     //Ground collision masks
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"1Rectangles1" ofType:@"plist"];
+    NSString *collisionString = [NSString stringWithFormat:@"%dRectangles%d", worldCode, levelCode];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:collisionString ofType:@"plist"];
     NSMutableArray *groundRectangles = [[NSMutableArray alloc]initWithContentsOfFile:filePath];
     for(int i = 0; i < [groundRectangles count]; i = i + 4) {
         CGRect rectangle = CGRectMake([[groundRectangles objectAtIndex:i] intValue], 320-[[groundRectangles objectAtIndex:i+1] intValue] -[[groundRectangles objectAtIndex:i+3] intValue], [[groundRectangles objectAtIndex:i+2] intValue], [[groundRectangles objectAtIndex:i+3] intValue]);

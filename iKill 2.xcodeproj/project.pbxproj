@@ -143,9 +143,9 @@
 		62C510541C4C690C00D9AB30 /* Bullet7.png in Resources */ = {isa = PBXBuildFile; fileRef = 62C510481C4C690C00D9AB30 /* Bullet7.png */; };
 		62C510551C4C690C00D9AB30 /* Bullet8.png in Resources */ = {isa = PBXBuildFile; fileRef = 62C510491C4C690C00D9AB30 /* Bullet8.png */; };
 		62C510561C4C690C00D9AB30 /* Bullet9.png in Resources */ = {isa = PBXBuildFile; fileRef = 62C5104A1C4C690C00D9AB30 /* Bullet9.png */; };
+		62C510591C4C831700D9AB30 /* manBullet.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 62C510581C4C831700D9AB30 /* manBullet.atlas */; };
 		62EB280F1C318FD700A7FBD2 /* Bullet.m in Sources */ = {isa = PBXBuildFile; fileRef = 62EB280E1C318FD700A7FBD2 /* Bullet.m */; };
 		62EB28131C319E2B00A7FBD2 /* Weapon.m in Sources */ = {isa = PBXBuildFile; fileRef = 62EB28121C319E2B00A7FBD2 /* Weapon.m */; };
-		62EB28171C31A0A400A7FBD2 /* manBullet.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 62EB28161C31A0A400A7FBD2 /* manBullet.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -294,11 +294,11 @@
 		62C510481C4C690C00D9AB30 /* Bullet7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bullet7.png; sourceTree = "<group>"; };
 		62C510491C4C690C00D9AB30 /* Bullet8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bullet8.png; sourceTree = "<group>"; };
 		62C5104A1C4C690C00D9AB30 /* Bullet9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bullet9.png; sourceTree = "<group>"; };
+		62C510581C4C831700D9AB30 /* manBullet.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = manBullet.atlas; path = "Graphics Files/manBullet.atlas"; sourceTree = "<group>"; };
 		62EB280D1C318FD700A7FBD2 /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bullet.h; sourceTree = "<group>"; };
 		62EB280E1C318FD700A7FBD2 /* Bullet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bullet.m; sourceTree = "<group>"; };
 		62EB28111C319E2B00A7FBD2 /* Weapon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Weapon.h; sourceTree = "<group>"; };
 		62EB28121C319E2B00A7FBD2 /* Weapon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Weapon.m; sourceTree = "<group>"; };
-		62EB28161C31A0A400A7FBD2 /* manBullet.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = manBullet.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -364,15 +364,15 @@
 		621A9A001C2F1EA700C2CC32 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				62C510581C4C831700D9AB30 /* manBullet.atlas */,
 				62C510571C4C6CB600D9AB30 /* Player Atlases */,
 				62C5103E1C4C690C00D9AB30 /* Player Bullets */,
-				62C510251C4C689900D9AB30 /* Pivot Images */,
+				62C510251C4C689900D9AB30 /* Weapon Pivots */,
 				62C50F8C1C4C483200D9AB30 /* Drops */,
 				625EE0A01C3ADCC000A98CC3 /* Ships */,
 				625EE07F1C3AD84B00A98CC3 /* Enemy Bullets */,
-				62C50F5A1C4C330400D9AB30 /* Player Handles */,
-				625EE0661C3AD5BB00A98CC3 /* Player Barrels */,
-				62EB28161C31A0A400A7FBD2 /* manBullet.atlas */,
+				62C50F5A1C4C330400D9AB30 /* Weapon Handles */,
+				625EE0661C3AD5BB00A98CC3 /* Weapon Barrels */,
 				62C50FCA1C4C669200D9AB30 /* Collision Masks */,
 				621A9A101C2F3D6300C2CC32 /* UI Elements */,
 				62C50FAB1C4C662800D9AB30 /* Foregrounds */,
@@ -384,12 +384,13 @@
 		621A9A0B1C2F315900C2CC32 /* Backgrounds */ = {
 			isa = PBXGroup;
 			children = (
+				621A9A0C1C2F319A00C2CC32 /* 1Background.png */,
 				62C50FA51C4C661F00D9AB30 /* 2Background.png */,
 				62C50FA61C4C661F00D9AB30 /* 3Background.png */,
 				62C50FA71C4C661F00D9AB30 /* 4Background.png */,
-				621A9A0C1C2F319A00C2CC32 /* 1Background.png */,
 			);
-			path = Backgrounds;
+			name = Backgrounds;
+			path = "Graphics Files/Backgrounds";
 			sourceTree = "<group>";
 		};
 		621A9A101C2F3D6300C2CC32 /* UI Elements */ = {
@@ -402,10 +403,11 @@
 				621A9A131C2F3D8F00C2CC32 /* RightArrow.png */,
 				621A9A111C2F3D7B00C2CC32 /* LeftArrow.png */,
 			);
-			path = "UI Elements";
+			name = "UI Elements";
+			path = "Graphics Files/UI Elements";
 			sourceTree = "<group>";
 		};
-		625EE0661C3AD5BB00A98CC3 /* Player Barrels */ = {
+		625EE0661C3AD5BB00A98CC3 /* Weapon Barrels */ = {
 			isa = PBXGroup;
 			children = (
 				625EE0671C3AD5BB00A98CC3 /* Barrel1.png */,
@@ -421,7 +423,8 @@
 				625EE0711C3AD5BB00A98CC3 /* Barrel8.png */,
 				625EE0721C3AD5BB00A98CC3 /* Barrel9.png */,
 			);
-			path = "Player Barrels";
+			name = "Weapon Barrels";
+			path = "Graphics Files/Weapon Barrels";
 			sourceTree = "<group>";
 		};
 		625EE07F1C3AD84B00A98CC3 /* Enemy Bullets */ = {
@@ -444,7 +447,8 @@
 				625EE08E1C3AD84B00A98CC3 /* EnemyBullet4Explosion2.png */,
 				625EE08F1C3AD84B00A98CC3 /* EnemyBullet4Explosion3.png */,
 			);
-			path = "Enemy Bullets";
+			name = "Enemy Bullets";
+			path = "Graphics Files/Enemy Bullets";
 			sourceTree = "<group>";
 		};
 		625EE0A01C3ADCC000A98CC3 /* Ships */ = {
@@ -455,10 +459,11 @@
 				625EE0AA1C41CF9C00A98CC3 /* ship3.atlas */,
 				625EE0AB1C41CF9C00A98CC3 /* ship2.atlas */,
 			);
-			path = Ships;
+			name = Ships;
+			path = "Graphics Files/Ships";
 			sourceTree = "<group>";
 		};
-		62C50F5A1C4C330400D9AB30 /* Player Handles */ = {
+		62C50F5A1C4C330400D9AB30 /* Weapon Handles */ = {
 			isa = PBXGroup;
 			children = (
 				62C50F5B1C4C331800D9AB30 /* Back1.png */,
@@ -474,7 +479,8 @@
 				62C50F651C4C331800D9AB30 /* Back11.png */,
 				62C50F661C4C331800D9AB30 /* Back12.png */,
 			);
-			path = "Player Handles";
+			name = "Weapon Handles";
+			path = "Graphics Files/Weapon Handles";
 			sourceTree = "<group>";
 		};
 		62C50F8C1C4C483200D9AB30 /* Drops */ = {
@@ -493,7 +499,8 @@
 				62C50F971C4C484500D9AB30 /* Drop11.png */,
 				62C50F981C4C484500D9AB30 /* Drop12.png */,
 			);
-			path = Drops;
+			name = Drops;
+			path = "Graphics Files/Drops";
 			sourceTree = "<group>";
 		};
 		62C50FAB1C4C662800D9AB30 /* Foregrounds */ = {
@@ -516,7 +523,8 @@
 				62C50FB91C4C665700D9AB30 /* 4Foreground3.png */,
 				62C50FBA1C4C665700D9AB30 /* 4Foreground4.png */,
 			);
-			path = Foregrounds;
+			name = Foregrounds;
+			path = "Graphics Files/Foregrounds";
 			sourceTree = "<group>";
 		};
 		62C50FCA1C4C669200D9AB30 /* Collision Masks */ = {
@@ -539,10 +547,11 @@
 				62C50FD81C4C66C700D9AB30 /* 4Rectangles3.plist */,
 				62C50FD91C4C66C700D9AB30 /* 4Rectangles4.plist */,
 			);
-			path = "Collision Masks";
+			name = "Collision Masks";
+			path = "Graphics Files/Collision Masks";
 			sourceTree = "<group>";
 		};
-		62C510251C4C689900D9AB30 /* Pivot Images */ = {
+		62C510251C4C689900D9AB30 /* Weapon Pivots */ = {
 			isa = PBXGroup;
 			children = (
 				62C510261C4C689900D9AB30 /* Pivot1.png */,
@@ -558,7 +567,8 @@
 				62C510301C4C689900D9AB30 /* Pivot8.png */,
 				62C510311C4C689900D9AB30 /* Pivot9.png */,
 			);
-			path = "Pivot Images";
+			name = "Weapon Pivots";
+			path = "Graphics Files/Weapon Pivots";
 			sourceTree = "<group>";
 		};
 		62C5103E1C4C690C00D9AB30 /* Player Bullets */ = {
@@ -578,7 +588,7 @@
 				62C5104A1C4C690C00D9AB30 /* Bullet9.png */,
 			);
 			name = "Player Bullets";
-			path = "/Users/Udayan/Documents/Xcode playing/iKill 2/iKill 2/Player Bullets";
+			path = "/Users/Udayan/Documents/Xcode playing/iKill 2/iKill 2/Graphics Files/Player Bullets";
 			sourceTree = "<absolute>";
 		};
 		62C510571C4C6CB600D9AB30 /* Player Atlases */ = {
@@ -587,7 +597,8 @@
 				628012CB1C35534300930C42 /* manDie.atlas */,
 				621A9A1C1C3011C800C2CC32 /* manFrames.atlas */,
 			);
-			path = "Player Atlases";
+			name = "Player Atlases";
+			path = "Graphics Files/Player Atlases";
 			sourceTree = "<group>";
 		};
 		62EB28101C318FDB00A7FBD2 /* Game Objects */ = {
@@ -667,7 +678,6 @@
 				625EE09C1C3AD84B00A98CC3 /* EnemyBullet4.png in Resources */,
 				62C510551C4C690C00D9AB30 /* Bullet8.png in Resources */,
 				62C510501C4C690C00D9AB30 /* Bullet3.png in Resources */,
-				62EB28171C31A0A400A7FBD2 /* manBullet.atlas in Resources */,
 				625EE0781C3AD5BB00A98CC3 /* Barrel3.png in Resources */,
 				62C510341C4C689900D9AB30 /* Pivot11.png in Resources */,
 				62C50FC41C4C665700D9AB30 /* 3Foreground3.png in Resources */,
@@ -781,6 +791,7 @@
 				62C50F9E1C4C484500D9AB30 /* Drop6.png in Resources */,
 				62C510511C4C690C00D9AB30 /* Bullet4.png in Resources */,
 				62C50FA41C4C484500D9AB30 /* Drop12.png in Resources */,
+				62C510591C4C831700D9AB30 /* manBullet.atlas in Resources */,
 				62C50FDC1C4C66C800D9AB30 /* 1Rectangles4.plist in Resources */,
 				628012C41C33387C00930C42 /* aimNub.png in Resources */,
 				62C510321C4C689900D9AB30 /* Pivot1.png in Resources */,
